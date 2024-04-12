@@ -1,0 +1,4 @@
+public interface info_Voter {
+    public String Information_name();
+    public int Information_Age(); 
+}
