@@ -15,9 +15,19 @@ class Voting {
         return Choose;
     } 
 
-    public static void main(String[] arg ){
+    public static void main(String arg[]){
         Voting voting = new Voting();
         voting.welcome();
-        System.out.println(voting.Choose);
+
+        switch (voting.Choose) {
+            case 1:
+                System.out.println();
+                break;
+            case 2:
+                System.out.println();
+                break;
+            default:
+                break;
+        } 
     }
 }
