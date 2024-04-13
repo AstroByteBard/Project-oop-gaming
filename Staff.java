@@ -1,17 +1,18 @@
-import java.util.Scanner;
 
-class Staff implements Information_Voter {
+class Staff implements info_Voter {
 
     private String Name_Staff; 
     private int Password_Staff;
-    Scanner keybord = new Scanner(System.in);
 
-    public String Information_name(){
-        System.out.print("Enter Your Name :");
-        Name_Staff = keybord.nextLine();
-        return Name_Staff;
+    public Staff(String Name ,int password){
+        Name_Staff = Name;
+        Password_Staff = password;
     }
-    public int Information_Age(){
-        return 0;
+
+    public void getname(){
+        System.out.println(Name_Staff);
+    }
+    public int Age(){
+        return Password_Staff;
     }
 }

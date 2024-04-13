@@ -24,7 +24,12 @@ class Voting {
                 System.out.println();
                 break;
             case 2:
-                System.out.println();
+                System.out.print("Enter You Name: ");
+                String Name = voting.keybord.next();
+                System.out.print("Enter you Password: ");
+                int Password = voting.keybord.nextInt();
+                Staff staff = new Staff(Name, Password);
+                staff.getname();
                 break;
             default:
                 break;
