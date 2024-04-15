@@ -2,16 +2,19 @@ import java.util.Scanner;
 
 class Voting {
 
-    public int Choose = 0;
-    Scanner keybord = new Scanner(System.in);
+    Scanner keyboard = new Scanner(System.in);
+    public static int Choose;
+    public static String name;
+    public static int age;
+    public static int Password;
 
     private int welcome (){
-        System.out.println("Welcome Everyone This is Voting Online");
+        System.out.println("Welcome everyone this is Online Voting");
         System.out.println("1. Voter");
         System.out.println("2. Staff");
         System.out.println("3. Out");
         System.out.print("Choose...");
-        Choose = keybord.nextInt();
+        Choose = keyboard.nextInt();
         return Choose;
     } 
 
@@ -19,17 +22,23 @@ class Voting {
         Voting voting = new Voting();
         voting.welcome();
 
-        switch (voting.Choose) {
+        switch (Choose) {
             case 1:
-                System.out.println();
+                System.out.print("\nVoter \nEnter your name: ");
+                name = voting.keyboard.next();
+                System.out.print("Enter your age: ");
+                age = voting.keyboard.nextInt();
+
+                Voter voter = new Voter(name, age);
+                voter.CONCLUSION();
                 break;
             case 2:
-                System.out.print("Enter You Name: ");
-                String Name = voting.keybord.next();
+                System.out.print("\nStaff \nEnter your name: ");
+                name = voting.keyboard.next();
                 System.out.print("Enter you Password: ");
-                int Password = voting.keybord.nextInt();
-                Staff staff = new Staff(Name, Password);
-                staff.getname();
+                Password = voting.keyboard.nextInt();
+                Staff staff = new Staff(name, Password);
+
                 break;
             default:
                 break;

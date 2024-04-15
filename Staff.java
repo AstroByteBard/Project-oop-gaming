@@ -1,18 +1,19 @@
 
-class Staff implements info_Voter {
+class Staff{
 
-    private String Name_Staff; 
-    private int Password_Staff;
+    private String Name; 
+    private int password;
 
     public Staff(String Name ,int password){
-        Name_Staff = Name;
-        Password_Staff = password;
+        this.Name = Name;
+        this.password = password;
     }
 
-    public void getname(){
-        System.out.println(Name_Staff);
+    public void inforvoter(){
+        System.out.println("    E-Voting    ");
+        System.out.println("Name: " + Name);
+        System.out.println("Password: " + password);
+        // WIP
     }
-    public int Age(){
-        return Password_Staff;
-    }
+    
 }
