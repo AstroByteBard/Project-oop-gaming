@@ -20,11 +20,11 @@ class Voter{
         return Choose;
     }
 
-    public static String Question2(){
+    public  String Question2(){
         System.out.println("2). What is this Years ");
         System.out.println("     A).2567     B).2566     ");
         System.out.println("Ans: ");
-        //String Choose = keyboard.next();
+        Choose = keyboard.next();
         return Choose;
     }
 
@@ -32,7 +32,7 @@ class Voter{
         System.out.println("3). Who is a most importent in Thailand ");
         System.out.println("     A).Chadchart     B).Prayut     ");
         System.out.println("Ans: ");
-        //String Choose = keyboard.next();
+        Choose = keyboard.next();
         return Choose;
     }
 
@@ -40,7 +40,7 @@ class Voter{
         System.out.println("4). Are you gay ");
         System.out.println("     A).No,i'm gay     B).yes,i'm gay     ");
         System.out.println("Ans: ");
-        String Choose = keyboard.next();
+        Choose = keyboard.next();
         return Choose;
         
     }
@@ -49,15 +49,22 @@ class Voter{
         System.out.println("5). Do you like Prayut ");
         System.out.println("     A).maybe     B).No     ");
         System.out.println("Ans: ");
-        String Choose = keyboard.next();
+        Choose = keyboard.next();
         return Choose;
     }
 
-    public int CONCLUSION(){
-        System.out.println(Question1());
-        if (Choose.equals("A")){
-            return 1;
+    public String CONCLUSION(){
+        if (Question1().equals("A")){
+            return "YodO";
         }
-        return 0;
+        else{
+            return "Sleep";
+        }
+        if (Question2().equals("B")){
+            return "AD";
+        }
+        else {
+            return null;
+        }
     }
 }
