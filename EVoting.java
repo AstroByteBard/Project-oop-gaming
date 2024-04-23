@@ -41,6 +41,7 @@ public class EVoting {
                         voters[i] = new Voter(name);
                         Voter.Vote();
                     }
+                    new VoterWriten().start(voters);
                 }
                 else {
                     System.out.println("Plss Selcen First");

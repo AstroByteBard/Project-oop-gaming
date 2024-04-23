@@ -1,4 +1,4 @@
-public class Voter extends Voting{
+public class Voter extends Voting {
     
     private String Name;
 
@@ -10,7 +10,7 @@ public class Voter extends Voting{
         Question();
     }
 
-    public String showname(){
+    public String getName(){
         return Name;
     }
 
