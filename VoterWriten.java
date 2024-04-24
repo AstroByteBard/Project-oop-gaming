@@ -20,7 +20,7 @@ public class VoterWriten {
 				
 			}
 		} catch (IOException e) {
-			System.out.println("Erorr");
+			System.out.println("Error");
 		}
 
 		System.out.println("Voters saved successfully to " + FileName + "!");
