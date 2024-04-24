@@ -2,20 +2,50 @@ import java.util.Scanner;
 
 public class Voting {
     
-    static Scanner keyboard = new Scanner(System.in);
-    static int A = 0;
-    static int B = 0;
+    private static Scanner keyboard = new Scanner(System.in);
+    private static int scoreA = 0;
+    private static int scoreB = 0;
+    private static String president = null;
+
+    public static int getscoreA(){
+        return scoreA;
+    }
+
+    public static int getscoreB(){
+        return scoreB;
+    }
+
+    public static void Showscore(){
+        System.out.print("Mark : " + getscoreA() + " || Plum : " + getscoreB());
+    }
 
     private static void Ans(){
         System.out.print("Choose... ");
         String Score = keyboard.next();
-        if (Score.equals("A")){
-            A++;
-        }
-        else {
-            B++;
-        }
+        while (true) {
+            if (Score.toUpperCase() == "A" || Score.toUpperCase() == "B"){
+                if ( Score.toUpperCase() == "A" ){
+                    scoreA++;
+                } 
+                if ( Score.toUpperCase() == "B" ){
+                    scoreB++;
+                }
+                return;
+            } else { 
+                System.out.println("Not corrt try agine");
+            }
+        }  
     }
+
+    public String calculateCount(){
+        if ( scoreA > scoreB) {
+            president = "Mark";
+        }else {
+            president = "Plum";
+        }
+        return president;
+    }
+
     public static void Question(){
         System.out.println("\nQuestion 1: What kind of leader do you want for the world?");
         System.out.println("A. Expert negotiator, able to find compromises between conflicting countries even if it requires some concessions.");

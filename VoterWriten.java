@@ -4,12 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class VoterWriten {
-    String FileName = "VoteTest"; //เก็บไว้ตั้งชื่อไฟล์
-
-    public void setFileName(String FileName){
-        this.FileName = FileName;
-    }
-    public void start(Voter[] voters){
+    
+    public void start(Voter[] voters,String FileName){
         //Create
         savefile(FileName, voters);
     }
@@ -20,6 +16,7 @@ public class VoterWriten {
 			for (Voter v : voters)
 			{
 				dOut.writeUTF(v.getName());  // ชื่อ
+                dOut.writeUTF(v.calculateCount());
 				
 			}
 		} catch (IOException e) {

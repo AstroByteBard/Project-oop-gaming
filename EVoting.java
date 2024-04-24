@@ -5,6 +5,7 @@ public class EVoting {
     static Scanner keyboard = new Scanner(System.in);
     public static Voter[] voters;
     private static int numVoters;
+    private static String file;
 
     private static int Menu_Staff(String name){
         System.out.println("\nWelcome Sir. " + name + "\n");
@@ -41,11 +42,10 @@ public class EVoting {
                         voters[i] = new Voter(name);
                         Voter.Vote();
                     }
-                    new VoterWriten().start(voters);
+                    new VoterWriten().start(voters,file);
                 }
                 else {
                     System.out.println("Plss Selcen First");
-
                 }
                 break;
             case 2:
@@ -58,10 +58,12 @@ public class EVoting {
                         case 1:
                             System.out.print("Enter Number for voter : ");
                             numVoters = keyboard.nextInt();
+                            System.out.print("Enter file Name : ");
+                            file = keyboard.next();
                             break;
                         case 2:
                             System.out.print("\nCheck Vote ");
-
+                            Showscore();
                             break;
     
                         case 3:
@@ -86,4 +88,5 @@ public class EVoting {
         } 
         }
     }
+
 }
