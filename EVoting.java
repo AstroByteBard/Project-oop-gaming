@@ -63,7 +63,7 @@ public class EVoting {
                             break;
                         case 2:
                             System.out.print("\nCheck Vote ");
-                            Showscore();
+                            
                             break;
     
                         case 3:
