@@ -14,13 +14,14 @@ public class VoterReader {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
-            while((line = reader.readLine()) != null)
-                System.out.println(reader.readLine());
+            while((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
             reader.close();
         } catch(IOException e){
             e.printStackTrace();
         }
-        System.out.println("load successfully form " + fileName);
+        System.out.println("Loaded successfully from " + fileName);
         return null;
     }
 }

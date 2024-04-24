@@ -13,7 +13,7 @@ public class VoterWriten {
         try  {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(FileName));
 			for (Voter v : voters){
-				writer.write("Name : " + v.getName() + " President : " + v.calculateCount() + " ");
+				writer.write("Name : " + v.getName() + " President : " + v.calculateCount() + " \n");
 			}
 			writer.close();
 			System.out.println("Voters saved successfully to " + FileName + "!");
