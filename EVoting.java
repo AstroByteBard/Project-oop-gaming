@@ -28,6 +28,82 @@ public class EVoting {
         return Choose;
     } 
 
+    private static void Chose (){
+        while (true) {
+            switch (welcome()) {
+
+            case 1:
+                if (numVoters > 0) {
+                    System.out.print("\nVoter\n");
+                    voters = new Voter[numVoters]; 
+                    for (int i = 0; i < numVoters; i++) {
+                        System.out.print("----------Chose President----------\n 1.Plume\n 2.Mark\n-----------------------------------\nEnter name for voter " + (i+1) + ": ");
+                        String name = keyboard.next();
+                        voters[i] = new Voter(name);
+                        Voter.Vote();
+                        Chose ();
+                        
+                    }
+                    new VoterWriten().savefile(file, voters);
+                }
+                else {
+                    System.out.println("\n!! Please let the staff determine the amount for voters first!!");
+                }
+                break;
+            case 2:
+
+                System.out.print("\n-------- Staff -------- \nEnter your name: ");
+                String name = keyboard.next();
+                System.out.print("Enter staff password: ");
+                String password = keyboard.next();
+
+                while (true) {
+                    if (password.equals("00000")){
+                        switch (Menu_Staff(name)) {
+                            case 1:
+                                System.out.print("Enter Number for voter : ");
+                                numVoters = keyboard.nextInt();
+                                System.out.print("Enter file Name : ");
+                                file = keyboard.next();
+                                break;
+                            case 2:
+                                System.out.print("\nCheck Vote ");
+                                Voter.Showscore();
+                                break;
+    
+                            case 3:
+                                System.out.println("Print voting");
+                                System.out.print("Enter file Name : ");
+                                file = keyboard.next();
+                                new VoterReader().printVotesArray(file);
+                                break;
+    
+                            case 4:
+                                break;
+    
+                            default:
+                                System.out.println("Out of Service");
+                                break;
+                        }
+                        break;
+                    }
+                    else {
+                        System.out.println("\n=-=-= Wrong password, please try again =-=-=");
+                        break;
+                    }
+                }
+                break; 
+
+            case 3:
+                System.out.println("\n=-=-= Thank you for using our service =-=-=");
+                return;
+            default:
+                System.out.println("\n=-=-= Out of Service =-=-=");
+                break;
+        } 
+        }
+    }
+
     public static void main(String[] args) {
         while (true) {
             switch (welcome()) {
@@ -36,10 +112,11 @@ public class EVoting {
                     System.out.print("\nVoter\n");
                     voters = new Voter[numVoters]; 
                     for (int i = 0; i < numVoters; i++) {
-                        System.out.print("Enter name for voter " + (i+1) + ": ");
+                        System.out.print("----------Chose President----------\n 1.Plume\n 2.Mark\n-----------------------------------\nEnter name for voter " + (i+1) + ": ");
                         String name = keyboard.next();
                         voters[i] = new Voter(name);
                         Voter.Vote();
+                        Chose ();
                     }
                     new VoterWriten().savefile(file, voters);
                 }
