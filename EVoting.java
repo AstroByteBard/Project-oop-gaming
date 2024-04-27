@@ -32,6 +32,8 @@ public class EVoting {
                 case 1:
                 System.out.print("Enter Number for voter : ");
                 numVoters = keyboard.nextInt();
+                System.out.print("Enter name for file : ");
+                file = keyboard.next();
                 break;
 
                 case 2:
@@ -121,13 +123,8 @@ public class EVoting {
                 return;
                 
                 default:
-                if (userChoose == -999) {
-                    System.out.println();
-                }
-                else {
                     System.out.println("\n< !! Input error, Please enter 1 , 2 or 3 !! >");
                     System.out.println("---------------------------------------------------\n");
-                }
                 break;
             } 
         }
