@@ -11,6 +11,9 @@ public class VoterWriten {
 
     protected void savefile(String FileName,Voter[] voters){
         try  {
+			/*if (FileName == null || voters == null) {
+				return; 
+			*/
 			BufferedWriter writer = new BufferedWriter(new FileWriter(FileName));
 			for (Voter v : voters){
 				writer.write("Name : " + v.getName() + " President : " + v.calculateCount() + " \n");
