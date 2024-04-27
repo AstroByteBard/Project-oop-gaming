@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Voting {
+
+    //Revise word
     
     private static Scanner keyboard = new Scanner(System.in);
     private static int scoreA = 0;
@@ -8,13 +10,15 @@ public class Voting {
     private static String president = null;
 
     public static void Showscore(){
-        System.out.print("Mark : " + scoreA + " || Plum : " + scoreB + "\n");
+        System.out.println("< A : " + scoreA + " votes >");
+        System.out.println("< B : " + scoreB + " votes >\n");
+        System.out.println("---------------------------------------------------\n");
     }
 
     private static void Ans(){
         System.out.print("Choose... ");
         String Score = keyboard.next();
-        if (Score.equals("A") || Score.equals("B")) {
+        if (Score.equals("A") || Score.equals("a") || Score.equals("B") || Score.equals("b")) {
             if (Score.equals("A")) {
                 scoreA = scoreA + 1;
             } 
@@ -22,7 +26,7 @@ public class Voting {
                 scoreB = scoreB + 1;
             }
         } else { 
-            System.out.println("Not correct, try again");
+            System.out.println("< Not correct, try again >");
         }
     }
 
@@ -56,6 +60,6 @@ public class Voting {
         System.out.println("A. Firm in principles, dedicated to goals even in the face of pressure and obstacles.");
         System.out.println("B. Flexible, adapting to situations even if it requires changing policies or positions.");
         Ans();
-        System.out.println("----- Thank you -----");
+        System.out.println("=-=-= Thank you =-=-=\n");
     }
 }

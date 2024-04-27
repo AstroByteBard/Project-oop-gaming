@@ -1,17 +1,17 @@
 public class Voter extends Voting {
     
-    private String Name;
+    private int id;
 
-    public Voter (String name){
-        Name = name;
+    public Voter (int id){
+        this.id = id;
     }
     
     public static void Vote(){
         Question();
     }
 
-    public String getName(){
-        return Name;
+    public int getId(){
+        return id;
     }
 
 }
