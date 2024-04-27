@@ -21,4 +21,5 @@ public class VoterWriten {
 			e.printStackTrace();
 		}
 	}
+
 }

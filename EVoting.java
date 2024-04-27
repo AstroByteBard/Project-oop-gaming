@@ -89,11 +89,10 @@ public class EVoting {
                     System.out.print("\nVoter\n");
                     voters = new Voter[numVoters]; 
                     for (int i = 0; i < numVoters; i++) {
-                        System.out.print("----------Chose President----------\n 1.Plume\n 2.Mark\n-----------------------------------\nEnter name for voter " + (i+1) + ": ");
+                        System.out.print("----------Chose President----------\n A.Mark\n B.Plum\n-----------------------------------\nEnter voter name " + (i+1) + ": ");
                         String name = keyboard.next();
                         voters[i] = new Voter(name);
                         Voter.Vote();
-                        // Chose ();
                     }
                     new VoterWriten().savefile(file, voters);
                 }
@@ -135,7 +134,10 @@ public class EVoting {
     }
 
     public static void main(String[] args) {
-        userChoice();
+        while (true) {
+            userChoice();
+            System.out.println("\n");
+        }
     }
-
 }
+
