@@ -14,7 +14,7 @@ public class VoterWriter {
 		try  {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(FileName));
 			for (Voter v : voters){
-				writer.write("ID : " + v.getId() + " | choose : " + v.scoreCount() + " \n");
+				writer.write("ID : " + v.getId() + " | choose : " + v.getChoose() + " \n");
 			}
 			writer.close();
 		} catch (IOException e){
