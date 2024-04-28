@@ -11,27 +11,13 @@ public class EVoting {
     private static int numVoters[];
     private static String file;
     private static int choose;
-
-    private static int menuStaff(){
-        System.out.println("\n=-=-= Staff =-=-=");
-        System.out.println("1. Set amount of voters");
-        System.out.println("2. Check voting");
-        System.out.println("3. Print information of voting");
-        System.out.println("4. Exit");
-        try {
-            System.out.print("Choose (1 , 2 , 3 or 4)... ");
-            int Choose = Integer.parseInt(keyboard.next());
-            return Choose;
-        } catch (NumberFormatException e) {
-            System.out.println("\n< !! Input error, Please enter integer number !! >");
-            System.out.println("---------------------------------------------------\n");
-            return -999;
-        }
-    }
+    
+    Voting voter = new Voting();
+    Staff staff = new Staff();
 
     private static void staff(){
         while (true) {
-            int staffChoose = menuStaff();
+            int staffChoose = Staff.menu();
             int userInput = 0;
             switch (staffChoose) {
                 case 1:
@@ -92,25 +78,9 @@ public class EVoting {
         }
     }
 
-    private static int menu(){
-        System.out.println("\n=-=-= Welcome to super earth voting =-=-=");
-        System.out.println("1. Vote ");
-        System.out.println("2. Voting information (For staff)");
-        System.out.println("3. Quit");
-        try {
-            System.out.print("Choose (1 , 2 or 3)... ");
-            int Choose = Integer.parseInt(keyboard.next());
-            return Choose;
-        } catch (NumberFormatException e) {
-            System.out.println("\n< !! Input error, Please enter integer number !! >");
-            System.out.println("---------------------------------------------------\n");
-            return -999;
-        }
-    } 
-
     private static void userChoice(){
         while (true) {
-            int userChoose = menu();
+            int userChoose = Voting.menu();
             choose = userChoose;
             switch (choose) {
                 case 1:
@@ -122,7 +92,7 @@ public class EVoting {
                         for (int i = 0; i < voters.length; i++) {
                             try {
                                 System.out.print("Enter id : ");
-                                int id = Integer.parseInt(keyboard.next()); //cant fix input with - operator (try to exception -)
+                                int id = Integer.parseInt(keyboard.next());
                                 voters[i] = new Voter(id);
                                 Voting.Vote();
                             } catch (NumberFormatException e) {
@@ -155,6 +125,9 @@ public class EVoting {
                 System.out.println("\n=-=-= Thank you for using our service =-=-=");
 
                 return;
+
+                case -999:
+                break;
                 
                 default:
                     System.out.println("\n< !! Input error, Please enter 1 , 2 or 3 !! >");

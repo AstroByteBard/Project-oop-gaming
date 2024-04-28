@@ -46,6 +46,21 @@ public class Voting {
         Ans();
         System.out.println("=-=-= Voting successful =-=-=");
         System.out.println("---------------------------------------------------");
-        
     }
+
+    public static int menu(){
+        System.out.println("\n=-=-= Welcome to super earth voting =-=-=");
+        System.out.println("1. Vote ");
+        System.out.println("2. Voting information (For staff)");
+        System.out.println("3. Quit");
+        try {
+            System.out.print("Choose (1 , 2 or 3)... ");
+            int Choose = Integer.parseInt(keyboard.next());
+            return Choose;
+        } catch (NumberFormatException e) {
+            System.out.println("\n< !! Input error, Please enter integer number !! >");
+            System.out.println("---------------------------------------------------\n");
+            return -999;
+        }
+    } 
 }
