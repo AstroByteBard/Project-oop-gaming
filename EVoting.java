@@ -36,16 +36,16 @@ public class EVoting {
             switch (staffChoose) {
                 case 1:
                 try {
-                    System.out.print("\nEnter number for voter : ");
+                    System.out.print("\n=-=-= Set amount of voter =-=-=\nEnter number for voter : ");
                     userInput = Integer.parseInt(keyboard.next());
                     if (userInput < 1) {
                         System.out.println("\n< !! Input error, Please enter positive integer number !! >");
-                        System.out.println("---------------------------------------------------\n");
+                        System.out.println("----------------------------------------------------\n");
                         staff();
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("\n< !! Input error, Please enter integer number !! >");
-                    System.out.println("---------------------------------------------------\n");
+                    System.out.println("---------------------------------------------------");
                     staff();
                 }
                 System.out.print("Name a file : ");
@@ -62,7 +62,7 @@ public class EVoting {
                 break;
 
                 case 2:
-                System.out.print("\n=-= Check Voting =-=\n");
+                System.out.print("\n=-=-= Check Voting =-=-=\n");
                 Voting.Showscore();
                 staff();
                 break;
@@ -116,12 +116,12 @@ public class EVoting {
                 case 1:
                 try {
                     if (numVoters.length > 0) {
-                        System.out.println("\n=-=-= Chose President =-=-=");
+                        System.out.println("=-=-= Chose President =-=-=");
                         voters = new Voter[numVoters.length]; 
                         numVoters = new int[0];
                         for (int i = 0; i < voters.length; i++) {
                             try {
-                                System.out.print("\nEnter id : ");
+                                System.out.print("Enter id : ");
                                 int id = Integer.parseInt(keyboard.next()); //cant fix input with - operator (try to exception -)
                                 voters[i] = new Voter(id);
                                 Voting.Vote();
@@ -139,7 +139,7 @@ public class EVoting {
                 break;
 
                 case 2:
-                System.out.println("\n=-= Staff login =-=");
+                System.out.println("\n=-=-= Staff login =-=-=");
                 System.out.print("Enter staff password: ");
                 String password = keyboard.next();
                 if (password.equals("0")){

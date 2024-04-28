@@ -40,10 +40,12 @@ public class Voting {
     }
 
     public static void Vote(){
+        System.out.println("\n=-=-= Name President =-=-=");
         System.out.println("A. A");
         System.out.println("B. B");
         Ans();
-        System.out.println("=-=-= Voting successful =-=-=\n");
-        System.out.println("---------------------------------------------------\n");
+        System.out.println("=-=-= Voting successful =-=-=");
+        System.out.println("---------------------------------------------------");
+        
     }
 }
