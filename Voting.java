@@ -19,10 +19,10 @@ public class Voting {
         System.out.print("Choose (A or B)... ");
         String Score = keyboard.next();
         if (Score.equals("A") || Score.equals("a") || Score.equals("B") || Score.equals("b")) {
-            if (Score.equals("A")) {
+            if (Score.equals("A") || Score.equals("a")) {
                 scoreA = scoreA + 1;
             } 
-            if (Score.equals("B")) {
+            if (Score.equals("B") || Score.equals("b")) {
                 scoreB = scoreB + 1;
             }
         } else { 
@@ -45,7 +45,7 @@ public class Voting {
         System.out.println("B. B");
         Ans();
         System.out.println("=-=-= Voting successful =-=-=");
-        System.out.println("---------------------------------------------------");
+        System.out.println("---------------------------------------------------\n");
     }
 
     public static int menu(){
