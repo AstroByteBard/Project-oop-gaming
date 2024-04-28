@@ -14,15 +14,13 @@ public class Voting {
     private static String Ans(){
         System.out.print("Choose (A or B)... ");
         String Score = keyboard.next();
-        if (Score.equals("A") || Score.equals("a") || Score.equals("B") || Score.equals("b")) {
-            if (Score.equals("A") || Score.equals("a")) {
-                scoreA = scoreA + 1;
-                return "A";
-            } 
-            if (Score.equals("B") || Score.equals("b")) {
-                scoreB = scoreB + 1;
-                return "B";
-            }
+        if (Score.equals("A") || Score.equals("a")) {
+            scoreA = scoreA + 1;
+            return "A";
+        } 
+        else if (Score.equals("B") || Score.equals("b")) {
+            scoreB = scoreB + 1;
+            return "B";
         } else { 
             System.out.println("< Not correct, try again >");
         }
