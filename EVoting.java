@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.lang.NumberFormatException;
+import java.lang.NullPointerException;
 
 public class EVoting {
 
@@ -11,8 +12,8 @@ public class EVoting {
     private static String file;
     private static int choose;
 
-    private static int menuStaff(String name){
-        System.out.println("\n=-=-= Staff =-=-=\n... Welcome Sir " + name + " ...");
+    private static int menuStaff(){
+        System.out.println("\n=-=-= Staff =-=-=");
         System.out.println("1. Set amount of voters");
         System.out.println("2. Check voting");
         System.out.println("3. Print information of voting");
@@ -28,9 +29,9 @@ public class EVoting {
         }
     }
 
-    private static void staff(String name){
+    private static void staff(){
         while (true) {
-            int staffChoose = menuStaff(name);
+            int staffChoose = menuStaff();
             int userInput = 0;
             switch (staffChoose) {
                 case 1:
@@ -40,12 +41,12 @@ public class EVoting {
                     if (userInput < 1) {
                         System.out.println("\n< !! Input error, Please enter positive integer number !! >");
                         System.out.println("---------------------------------------------------\n");
-                        staff(name);
+                        staff();
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("\n< !! Input error, Please enter integer number !! >");
                     System.out.println("---------------------------------------------------\n");
-                    staff(name);
+                    staff();
                 }
                 System.out.print("Name a file : ");
                 file = keyboard.next();
@@ -57,21 +58,20 @@ public class EVoting {
                     System.out.println("< There is " + userInput + " voter, store data in file " + file + " >");
                 }
                 System.out.println("---------------------------------------------------\n");
-                staff(name);
+                staff();
                 break;
 
                 case 2:
-                System.out.print("\n=-= Check Vote =-=\n");
+                System.out.print("\n=-= Check Voting =-=\n");
                 Voting.Showscore();
-                staff(name);
+                staff();
                 break;
 
                 case 3:
-                System.out.println("Print voting");
-                System.out.print("Enter file Name : "); 
+                System.out.print("\nEnter file Name : "); 
                 file = keyboard.next();
-                new VoterReader().printVotesArray(file);
-                staff(name);
+                new VoterReader().loadVoters(file);
+                staff();
                 break;
 
                 case 4:
@@ -86,14 +86,14 @@ public class EVoting {
                     System.out.println("\n< !! Input error, Please enter 1 , 2 , 3 or 4 !! >");
                     System.out.println("---------------------------------------------------\n");
                 }
-                staff(name);
+                staff();
                 break;
             }break;
         }
     }
 
     private static int menu(){
-        System.out.println("\n=-=-= Welcome to super earth =-=-=");
+        System.out.println("\n=-=-= Welcome to super earth voting =-=-=");
         System.out.println("1. Vote ");
         System.out.println("2. Voting information (For staff)");
         System.out.println("3. Quit");
@@ -114,37 +114,37 @@ public class EVoting {
             choose = userChoose;
             switch (choose) {
                 case 1:
-                if (numVoters.length > 0) {
-                    System.out.print("\nVoter\n");
-                    voters = new Voter[numVoters.length]; 
-                    numVoters = new int[0];
-                    for (int i = 0; i < voters.length; i++) {
-                        System.out.print("=-=-= Chose President =-=-=\nEnter student id : ");
-                        try {
-                            int id = Integer.parseInt(keyboard.next()); //cant fix input with - operator (try to exception -)
-                            voters[i] = new Voter(id);
-                            Voter.Vote();
-                        } catch (NumberFormatException e) {
-                            System.out.println("\n< !! Input error, Please enter integer number !! >");
-                            System.out.println("---------------------------------------------------\n");
+                try {
+                    if (numVoters.length > 0) {
+                        System.out.println("\n=-=-= Chose President =-=-=");
+                        voters = new Voter[numVoters.length]; 
+                        numVoters = new int[0];
+                        for (int i = 0; i < voters.length; i++) {
+                            try {
+                                System.out.print("\nEnter id : ");
+                                int id = Integer.parseInt(keyboard.next()); //cant fix input with - operator (try to exception -)
+                                voters[i] = new Voter(id);
+                                Voting.Vote();
+                            } catch (NumberFormatException e) {
+                                System.out.println("\n< !! Input error, Please enter integer number !! >");
+                                System.out.println("---------------------------------------------------\n");
+                            }
                         }
+                        new VoterWriter().savefile(file, voters);
                     }
-                    new VoterWriten().savefile(file, voters);
-                }
-                else {
+                } catch(NullPointerException e) {
                     System.out.println("\n< !! Please let the staff determine the amount for voters first !! >");
                     System.out.println("---------------------------------------------------\n");
                 }
                 break;
 
                 case 2:
-                System.out.print("\n=-= Staff login =-=\nEnter your name: ");
-                String name = keyboard.next();
+                System.out.println("\n=-= Staff login =-=");
                 System.out.print("Enter staff password: ");
                 String password = keyboard.next();
                 if (password.equals("0")){
                     System.out.println("< Correct password >");
-                    staff(name);
+                    staff();
                 }
                 else {
                     System.out.println("< Wrong password >\n");
@@ -153,6 +153,7 @@ public class EVoting {
 
                 case 3:
                 System.out.println("\n=-=-= Thank you for using our service =-=-=");
+
                 return;
                 
                 default:
