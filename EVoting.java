@@ -22,10 +22,21 @@ public class EVoting {
                 case 1:
                 try {
                     System.out.print("\n=-=-= Set amount of voter =-=-=\nEnter number for voter : ");
-                    numVoters = keyboard.nextInt();
+                    numVoters = Integer.parseInt(keyboard.next());
                     if (numVoters < 1) {
                         System.out.println("\n< !! Input error, Please enter positive integer number !! >");
                         System.out.println("----------------------------------------------------\n");
+                        staffChoice();
+                    } else {
+                        System.out.print("Name a file : ");
+                        file = keyboard.next();
+                        System.out.println("\n< Set voters successful >");
+                        if (userInput > 1) {
+                            System.out.println("< There are " + numVoters + " voters, store data in file " + file + " >");
+                        } else {
+                            System.out.println("< There is " + numVoters + " voter, store data in file " + file + " >");
+                        }
+                        System.out.println("---------------------------------------------------\n");
                         staffChoice();
                     }
                 } catch (NumberFormatException e) {
@@ -33,16 +44,6 @@ public class EVoting {
                     System.out.println("---------------------------------------------------");
                     staffChoice();
                 }
-                System.out.print("Name a file : ");
-                file = keyboard.next();
-                System.out.println("\n< Set voters successful >");
-                if (userInput > 1) {
-                    System.out.println("< There are " + numVoters + " voters, store data in file " + file + " >");
-                } else {
-                    System.out.println("< There is " + numVoters + " voter, store data in file " + file + " >");
-                }
-                System.out.println("---------------------------------------------------\n");
-                staffChoice();
                 break;
 
                 case 2:
@@ -96,9 +97,12 @@ public class EVoting {
                             }
                         }
                         new VoterWriter().savefile(file, voters);
+                    } else {
+                        System.out.println("\n< !! Please let the staff determine the amount for voters !! >");
+                        System.out.println("---------------------------------------------------\n");
                     }
                 } catch(NullPointerException e) {
-                    System.out.println("\n< !! Please let the staff determine the amount for voters first !! >");
+                    System.out.println("\n< !! Error, Please try again !! >");
                     System.out.println("---------------------------------------------------\n");
                 }
                 break;
