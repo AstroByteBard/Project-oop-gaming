@@ -22,9 +22,9 @@ public class Voting {
             scoreB = scoreB + 1;
             return "B";
         } else { 
-            System.out.println("< Not correct, try again >");
+            System.out.println("< Incorrect choice, cancel voting >");
+            return null;
         }
-        return null;
     }
 
     public static String Vote(){
@@ -33,7 +33,11 @@ public class Voting {
         System.out.println("A. A");
         System.out.println("B. B");
         choose = Ans();
-        System.out.println("=-=-= Voting successful =-=-=");
+        if (choose != null) {
+            System.out.println("=-=-= Voting successful =-=-=");
+        } else {
+            System.out.println("=-=-= Your vote is canceled =-=-=");
+        }
         System.out.println("---------------------------------------------------\n");
         return choose;
     }

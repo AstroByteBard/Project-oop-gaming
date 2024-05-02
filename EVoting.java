@@ -79,7 +79,7 @@ public class EVoting {
 
     private static void userChoice(){
         while (true) {
-            int userChoose = Voting.menu();
+            userChoose = Voting.menu();
             int menuChoose = userChoose;
             switch (menuChoose) {
                 case 1:
@@ -87,10 +87,18 @@ public class EVoting {
                     if (numVoters > 0) {
                         System.out.println("=-=-= Choose President =-=-=");
                         for (int i = 0; i < numVoters; i++) {
+                            outer:
                             try {
+                                int id = 0;
                                 System.out.print("Enter voter ID: ");
-                                int id = keyboard.nextInt();
-                                voters.add(new Voter(id, Voting.Vote()));
+                                id = keyboard.nextInt();
+                                if (id >= 0) {
+                                    voters.add(new Voter(id, Voting.Vote()));
+                                } else {
+                                    System.out.println("< Error input, please try again >");
+                                    System.out.println("---------------------------------------------------\n");
+                                    break outer;
+                                }                                
                             } catch (NumberFormatException e) {
                                 System.out.println("\n< !! Input error, Please enter integer number !! >");
                                 System.out.println("---------------------------------------------------\n");
